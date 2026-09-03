@@ -1,0 +1,7 @@
+services:
+  react-app:
+    build: .
+    image: react-app:latest
+    container_name: react-app
+    ports:
+      - "3000:80"
