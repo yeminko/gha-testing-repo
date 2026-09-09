@@ -1,0 +1,17 @@
+name: Simple Job Output
+on: workflow_dispatch
+jobs:
+  prepare-data:
+    runs-on: ubuntu-latest
+    outputs:
+      username: ${{ steps.generate-name.outputs.username }}
+    steps:
+      - name: Generate username
+        id: generate-name
+        run: echo "username=John Doe" >> $GITHUB_OUTPUT
+  output:
+    needs: prepare-data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show username
+        run: echo "The username is ${{ needs.prepare-data.outputs.username }}"
