@@ -1,0 +1,13 @@
+name: Using Environment Variables
+on: workflow_dispatch
+env:
+  USER_NAME: "John Doe"
+  USER_EMAIL: "john.doe@example.com"
+jobs:
+  build-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print user name
+        run: echo "User name is $USER_NAME"
+      - name: Print user email
+        run: echo "User email is $USER_EMAIL"
