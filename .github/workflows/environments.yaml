@@ -1,0 +1,14 @@
+name: Using Environments
+on: workflow_dispatch
+jobs:
+  output-values:
+    runs-on: ubuntu-latest
+    # Specify the environment for this job
+    environment: development
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Output environment values
+        run: |
+          echo "Username is ${{ vars.USER_NAME }}"
+          echo "My Secret is ${{ secrets.MY_SECRET }}"
