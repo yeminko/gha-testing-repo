@@ -1,0 +1,17 @@
+name: Continue on Error Example
+on: workflow_dispatch
+jobs:
+  test-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+      - name: Run Tests
+        run: npm run test
+        # This step will not fail the workflow even if it fails.
+        continue-on-error: true
+
+        # This step will not run because the previous step is treated as successful.
+      - name: Output if tests failed
+        if: failure()
+        run: echo "Tests have failed."
