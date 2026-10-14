@@ -1,4 +1,4 @@
-name: Continue on Error Example
+name: Continue on Error
 on: workflow_dispatch
 jobs:
   test-app:
