@@ -1,0 +1,5 @@
+name: Using Simple Reusable Workflow
+on: workflow_dispatch
+jobs:
+  call-simple-reusable:
+    uses: ./.github/workflows/simple-reusable.yaml
