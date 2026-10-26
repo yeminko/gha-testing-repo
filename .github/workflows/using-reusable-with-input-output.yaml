@@ -1,0 +1,14 @@
+name: Using Reusable Workflow with Input and Output
+on:
+  workflow_dispatch:
+jobs:
+  call_reusable_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Calling Reusable Workflow
+        id: getting_greeting
+        uses: ./.github/workflows/reusable-with-input-output.yaml
+        with:
+          username: "John Doe"
+      - name: Use Greeting
+        run: echo "${{ steps.getting_greeting.outputs.greeting }}"

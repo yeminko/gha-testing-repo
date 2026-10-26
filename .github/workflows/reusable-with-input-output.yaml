@@ -1,0 +1,21 @@
+name: Reusable Workflow with Input and Output
+on:
+  workflow_call:
+    inputs:
+      username: # variable name
+        required: true
+        description: "Username for the greeting"
+        type: string
+    outputs:
+      greeting:
+        description: "Greeting message"
+        value: ${{ jobs.example_job.outputs.greeting }}
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    outputs:
+      greeting: ${{ steps.generate_greeting.outputs.greeting }}
+    steps:
+      - name: Generate Greeting
+        id: generate_greeting
+        run: echo "greeting=Hello, ${{ inputs.username }}!" >> $GITHUB_OUTPUT
