@@ -1,0 +1,16 @@
+name: Calling Service Container from Host Machine
+on: workflow_dispatch
+jobs:
+  call-service-container:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+      - name: Call service container from host
+        run: |
+          curl http://localhost:5432
